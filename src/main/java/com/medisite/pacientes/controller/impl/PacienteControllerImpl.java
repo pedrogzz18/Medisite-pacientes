@@ -18,7 +18,8 @@ public class PacienteControllerImpl implements PacienteController {
     }
 
     @Override
-    public Paciente updatePaciente(@RequestBody PacienteEntity paciente){
+    public Paciente updatePaciente(@RequestBody PacienteEntity paciente, @PathVariable long id_paciente){
+        paciente.setIdPaciente(id_paciente);
         return pacienteService.updatePaciente(paciente);
     }
 

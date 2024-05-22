@@ -10,8 +10,8 @@ public interface PacienteController {
     @PostMapping("/create-paciente")
     public Paciente createPaciente(@RequestBody PacienteEntity paciente);
 
-    @PutMapping("/update-paciente")
-    public Paciente updatePaciente(@RequestBody PacienteEntity paciente);
+    @PutMapping("/update-paciente/{id_paciente}")
+    public Paciente updatePaciente(@RequestBody PacienteEntity paciente, @PathVariable long id_paciente);
 
     @DeleteMapping("/delete-paciente/{id_paciente}")
     public void deletePaciente(@PathVariable long id_paciente);
