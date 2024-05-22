@@ -42,9 +42,10 @@ public class JwtService {
         return extractExpirationDate(token).before(new Date());
     }
 
-    public String generateToken(String username, String role){
+    public String generateToken(String username, String role, long id){
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", role);
+        claims.put("id", id);
         return createToken(claims, username);
     }
 
@@ -65,5 +66,25 @@ public class JwtService {
 
     public long getJwtExpiration(){
         return jwtExpiration;
+    }
+
+    public boolean validateIdInToken(String token, long id){
+        Claims claims = extractAllClaims(token);
+        return (((Number) claims.get("id")).longValue() == (id));
+    }
+
+    public boolean isPaciente(String token){
+        Claims claims = extractAllClaims(token);
+        return (((String) claims.get("role")).equals("paciente"));
+    }
+
+    public boolean isAdmin(String token){
+        Claims claims = extractAllClaims(token);
+        return (((String) claims.get("role")).equals("admin"));
+    }
+
+    public boolean isMedico(String token) {
+        Claims claims = extractAllClaims(token);
+        return (((String) claims.get("role")).equals("medico"));
     }
 }

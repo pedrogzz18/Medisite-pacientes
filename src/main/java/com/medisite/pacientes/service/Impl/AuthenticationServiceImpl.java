@@ -43,7 +43,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 pacienteLoginDTO.getEmail(), pacienteLoginDTO.getPassword()));
         PacienteDTO pacienteDTO = PacienteMapper.PacienteEntityToPaciente(pacienteRepository.findByEmail(pacienteLoginDTO.getEmail()).get());
-        String jwtToken = jwtService.generateToken(pacienteLoginDTO.getEmail(), "paciente");
+        String jwtToken = jwtService.generateToken(pacienteLoginDTO.getEmail(), "paciente", pacienteDTO.getIdPaciente());
         LoginResponse loginResponse = new LoginResponse(jwtToken, jwtService.getJwtExpiration(), pacienteDTO);
         return ResponseEntity.ok(loginResponse);
     }
