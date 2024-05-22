@@ -13,20 +13,20 @@ public class PacienteServiceImpl implements PacienteService {
     @Autowired
     PacienteRepository pacienteRepository;
     public Paciente createPaciente(PacienteEntity paciente){
-        return PacienteMapper.PacienteEntityToPaciente(pacienteRepository.createPaciente(paciente));
+        return PacienteMapper.PacienteEntityToPaciente(pacienteRepository.save(paciente));
     }
 
     public void deletePaciente(long id_paciente){
-        pacienteRepository.deletePaciente(id_paciente);
+        pacienteRepository.deleteById(id_paciente);
     }
 
     public Paciente updatePaciente(PacienteEntity paciente){
 
-        return PacienteMapper.PacienteEntityToPaciente(pacienteRepository.updatePaciente(paciente));
+        return PacienteMapper.PacienteEntityToPaciente(pacienteRepository.save(paciente));
     }
 
     public Paciente getPacienteById(long id_paciente){
 
-        return PacienteMapper.PacienteEntityToPaciente(pacienteRepository.getPacienteById(id_paciente));
+        return PacienteMapper.PacienteEntityToPaciente(pacienteRepository.findById(id_paciente).get());
     }
 }
