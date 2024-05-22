@@ -1,12 +1,11 @@
-package com.medisite.pacientes.model;
+package com.medisite.pacientes.DTO;
 
-import jakarta.persistence.Entity;
 import lombok.*;
 import java.sql.Date;
 
 @Data
 @AllArgsConstructor
-public class Paciente {
+public class PacienteDTO {
     private long idPaciente;
     private String nombre;
     private String apellidoPaterno;

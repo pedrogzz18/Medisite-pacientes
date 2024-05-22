@@ -2,7 +2,7 @@ package com.medisite.pacientes.service.Impl;
 
 import com.medisite.pacientes.repository.entity.PacienteEntity;
 import com.medisite.pacientes.utils.PacienteMapper;
-import com.medisite.pacientes.model.Paciente;
+import com.medisite.pacientes.DTO.PacienteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.medisite.pacientes.repository.PacienteRepository;
 import com.medisite.pacientes.service.PacienteService;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class PacienteServiceImpl implements PacienteService {
     @Autowired
     PacienteRepository pacienteRepository;
-    public Paciente createPaciente(PacienteEntity paciente){
+    public PacienteDTO createPaciente(PacienteEntity paciente){
         return PacienteMapper.PacienteEntityToPaciente(pacienteRepository.save(paciente));
     }
 
@@ -20,12 +20,12 @@ public class PacienteServiceImpl implements PacienteService {
         pacienteRepository.deleteById(id_paciente);
     }
 
-    public Paciente updatePaciente(PacienteEntity paciente){
+    public PacienteDTO updatePaciente(PacienteEntity paciente){
 
         return PacienteMapper.PacienteEntityToPaciente(pacienteRepository.save(paciente));
     }
 
-    public Paciente getPacienteById(long id_paciente){
+    public PacienteDTO getPacienteById(long id_paciente){
 
         return PacienteMapper.PacienteEntityToPaciente(pacienteRepository.findById(id_paciente).get());
     }

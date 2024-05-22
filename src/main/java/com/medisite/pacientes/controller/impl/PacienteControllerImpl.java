@@ -1,7 +1,7 @@
 package com.medisite.pacientes.controller.impl;
 
 import com.medisite.pacientes.repository.entity.PacienteEntity;
-import com.medisite.pacientes.model.Paciente;
+import com.medisite.pacientes.DTO.PacienteDTO;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.medisite.pacientes.service.PacienteService;
@@ -13,12 +13,12 @@ public class PacienteControllerImpl implements PacienteController {
     PacienteService pacienteService;
 
     @Override
-    public Paciente createPaciente(@RequestBody PacienteEntity paciente){
+    public PacienteDTO createPaciente(@RequestBody PacienteEntity paciente){
         return pacienteService.createPaciente(paciente);
     }
 
     @Override
-    public Paciente updatePaciente(@RequestBody PacienteEntity paciente, @PathVariable long id_paciente){
+    public PacienteDTO updatePaciente(@RequestBody PacienteEntity paciente, @PathVariable long id_paciente){
         paciente.setIdPaciente(id_paciente);
         return pacienteService.updatePaciente(paciente);
     }
@@ -29,7 +29,7 @@ public class PacienteControllerImpl implements PacienteController {
     }
 
     @Override
-    public Paciente getPacienteById(@PathVariable long id_paciente){
+    public PacienteDTO getPacienteById(@PathVariable long id_paciente){
         return pacienteService.getPacienteById(id_paciente);
     }
 }

@@ -8,6 +8,7 @@ import java.sql.Time;
 
 @Data
 @Entity
+
 @Table(name="paciente")
 public class PacienteEntity {
     @Column(name="id_paciente")
