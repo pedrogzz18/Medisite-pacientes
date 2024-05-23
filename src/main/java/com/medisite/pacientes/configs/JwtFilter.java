@@ -32,7 +32,7 @@ public class JwtFilter extends OncePerRequestFilter {
     private Claims claims = null;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if(request.getServletPath().matches("/auth/login|/pacientes|/auth/signup")){
+        if(request.getServletPath().matches("/pacientes/auth/login|/pacientes|/pacientes/auth/signup")){
             filterChain.doFilter(request, response);
         } else{
             String authorizationHeader = request.getHeader("Authorization");
